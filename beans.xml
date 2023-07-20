@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+    
+     <!-- <context:annotation-config/>
+     <context:component-scan base-package="base.package"/> -->
+     
+     <!-- <bean id="Employee" class="com.spring.test.Employee">
+     	<property name="id" value="123"></property>
+     	<property name="name" value="Abhi"></property>
+     	<property name="isWorking" value="true"></property>
+     	<property name="address" ref="address">
+     		
+     	</property>
+     </bean>
+    <bean id="address" class="com.spring.test.Address"></bean> 
+     
+     <bean id="manager" class="com.spring.test.Manager">
+     <constructor-arg name="id" value="1245"></constructor-arg>
+     <constructor-arg name="name" value="Hasini"></constructor-arg>
+     <constructor-arg name="isManager" value="true"></constructor-arg>
+     <constructor-arg name="address" ref="address"></constructor-arg>
+     </bean> -->
+     
+     <bean id="Employee" class="com.spring.test.Employee" autowire="byName">
+     	<property name="id" value="123"></property>
+     	<property name="name" value="Abhi"></property>
+     	<property name="isWorking" value="true"></property>
+     	
+     </bean>
+     <bean id="address" class="com.spring.test.Address"></bean>
+     
+     <bean id="student" class="com.spring.core.test.Student">
+     	<property name="id" value="547"></property>
+     	<property name="name" value="mahesh"></property>
+     	<property name="studentC">
+     		<ref bean="studentC"/>
+     	</property>
+     </bean>
+     
+     <bean id="studentC" class="com.spring.core.test.StudentC" >
+    	 <constructor-arg name="id" value="0547547"></constructor-arg>
+    	 <constructor-arg name="name" value="K Mahesh"></constructor-arg>
+     </bean>
+     
+     <bean id="airtel" class="com.spring.core.dependencyinjection.AirtelSimCard">
+     	<!-- <property name="internetService" ref="internetService"></property> -->
+     </bean>
+     <bean id="jio" class="com.spring.core.dependencyinjection.JioSimCard">
+     	<!-- <property name="internetService" ref="internetService"></property> -->
+     </bean>
+     
+     <bean id="internetService" class="com.spring.core.dependencyinjection.InternetService"></bean>
+     <bean id="internetServiceN" class="com.spring.core.dependencyinjection.InternetService"></bean>
+     
+     <bean id="Human" class="com.spring.core.aurowireXML.Human" autowire="default"></bean>
+     <bean id="Heart" class="com.spring.core.aurowireXML.Heart"></bean>
+     
+     <context:annotation-config/>
+     <context:property-placeholder location="classpath:student-info.properties"/>
+     <bean id="studentP" class="com.spring.core.propertiesfile.Student">
+     	<!-- XML based litral injection
+     	 <property name="name" value="${student.name}"></property>
+     	<property name="age" value="${student.age}"></property>
+     	 -->
+     </bean>
+    
+    
+</beans>
